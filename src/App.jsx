@@ -1,7 +1,18 @@
-function App() {
+//Componente é um pedaço da aplicação que pode ser repetida (reaproveitável) com INF =!
+//Componente é uma função que retorna HTML
+
+//JSX - JavaScript + XML
+
+import {Post} from "./Post"
+export function App() {
   return (
-    <h1>Hello World</h1>
+    <div>
+    <Post  />
+    <Post  />
+    <Post  />
+    <Post  />
+    <Post  />
+    <Post  />
+    </div>
   )
 }
-
-export default App
