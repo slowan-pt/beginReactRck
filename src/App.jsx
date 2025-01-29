@@ -3,10 +3,14 @@
 
 //JSX - JavaScript + XML
 
-import {Post} from "./Post"
+import { Header } from "./components/header";
+import {Post} from "./Post";
+import './styles.css';
 export function App() {
   return (
     <div>
+      <Header />
+
     <Post 
       author="Sloan Nascimento"
       content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo quisquam corrupti temporibus dolore tenetur pariatur. Ut repudiandae voluptate quod quasi ea? Voluptatum, eum nemo natus repellendus sequi pariatur obcaecati tenetur?"
