@@ -5,21 +5,32 @@
 
 import { Header } from "./components/header";
 import {Post} from "./Post";
+import styles from './App.module.css';
 import './global.css';
+
+
 export function App() {
   return (
     <div>
       <Header />
 
-    <Post 
-      author="Sloan Nascimento"
-      content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo quisquam corrupti temporibus dolore tenetur pariatur. Ut repudiandae voluptate quod quasi ea? Voluptatum, eum nemo natus repellendus sequi pariatur obcaecati tenetur?"
-    />
+    <div className={styles.wrapper}>
+      <aside>
+        sidebar
+      </aside>
 
-    <Post 
-      author="Sloan Nascimento"
-      content="Testando 2º POST"
-    />
+      <main>
+        <Post 
+          author="Sloan Nascimento"
+          content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo quisquam corrupti temporibus dolore tenetur pariatur. Ut repudiandae voluptate quod quasi ea? Voluptatum, eum nemo natus repellendus sequi pariatur obcaecati tenetur?"
+        />
+
+        <Post 
+          author="Sloan Nascimento"
+          content="Testando 2º POST"
+        />
+      </main>
+    </div>
     
     </div>
   )
