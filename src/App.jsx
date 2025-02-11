@@ -4,10 +4,12 @@
 //JSX - JavaScript + XML
 
 import { Header } from "./components/header";
-import {Post} from "./Post";
-import styles from './App.module.css';
-import './global.css';
+import { Post } from "./components/Post";
 import { Sidebar } from "./components/Sidebar";
+
+import styles from './App.module.css';
+
+import './global.css';
 
 
 export function App() {
