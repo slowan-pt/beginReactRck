@@ -10,8 +10,13 @@
 
     --green-300: #00B37E;
     --green-500: #00875f;
+}
 
-
+:focus {
+/*Comentário: remover a borda branca da opção selecionada. Inclusive quando der TAB  */
+    outline: transparent;
+/*Comentário: Adiciona uma leve borda verde  */
+    box-shadow: 0 0 0 2px var(--green-500);
 }
 
 *{

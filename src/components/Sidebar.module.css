@@ -1,7 +1,7 @@
 .sidebar {
     background: var(--gray-800);
-    border-radius: 8px;
-    overflow: hidden; /*S-comentario-anotação: Deixa os cantos arredondados*/
+    border-radius: 8px; /*S-comentario-anotação: Deixa os cantos arredondados*/
+    overflow: hidden; 
 }
 
 .cover{

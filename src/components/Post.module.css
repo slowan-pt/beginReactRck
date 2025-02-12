@@ -97,6 +97,21 @@
     margin-top: 1rem;
 }
 
+.commentForm footer {
+/*Comentário: para esconder o bortão, enquando ele não é útil
+Note que o botão foi colocado dentro de um footer*/    
+    visibility: hidden;
+    max-height: 0;
+}
+
+.commentForm:focus-within footer{
+/*Se houver um foco em qualquer input em qualquer elemento dentro
+do ".comentForm" aplique a seguinte estilização"
+  */    
+    visibility: visible;
+    max-height: none;
+}
+
 .commentForm button {
     padding: 1rem 1.5rem;
     margin-top: 1rem;
