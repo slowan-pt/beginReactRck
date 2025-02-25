@@ -2,12 +2,21 @@ import { Avatar } from "./Avatar";
 import { Comment } from "./Comment";
 import styles from "./Post.module.css";
 
-export function Post () {
+/*
+Informações NEC (que serão transformadas em objetos)
+author: { avatar_url: "", name: "", role: ""}
+publisherAt: Date
+content: String
+
+*/
+
+export function Post (props) {
+    console.log(props);
     return (
         <article className={styles.post}>
             <header>
                 <div className={styles.author}>
-                    <Avatar hasBorder={true} src="/src/assets/avatar3.png" />
+                    <Avatar hasBorder={true } src="/src/assets/avatar3.png" />
                     <div className={styles.authorInfo}>
                         <strong>Sloan Nascimento </strong>
                         <span>Web Developer</span>

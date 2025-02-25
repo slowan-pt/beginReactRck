@@ -10,6 +10,44 @@ import { Sidebar } from "./components/Sidebar";
 import styles from './App.module.css';
 
 import './global.css';
+/*
+Informações NEC (que serão transformadas em objetos)
+author: { avatar_url: "", name: "", role: ""}
+publisherAt: Date
+content: String
+
+*/
+
+const posts = [
+  {
+    id: 1,
+    author: {
+      avatarUrl: '/src/assets/avatar3.png',
+      name: 'Sloan Nascimento',
+      role: 'Developer WEB'
+    },
+    content:[
+      {type: 'paragraph', content: 'Fala Galera'},
+      {type: 'paragraph', content: 'Acabei de subir mais um projeto'},
+      {type: 'link', content: 'jane.design/doctorcare'},
+    ],
+    publishedAt: new Date('2025-02-25 20:00:00'),
+  },
+  {
+    id: 2,
+    author: {
+      avatarUrl: '/src/assets/avatar2.png',
+      name: 'Isabelle Nascimento',
+      role: 'Programer WEB'
+    },
+    content:[
+      {type: 'paragraph', content: 'Olá'},
+      {type: 'paragraph', content: 'Fazendo testes uniários'},
+      {type: 'link', content: 'jane.design/doctorcare'},
+    ],
+    publishedAt: new Date('2025-02-28 03:00:00'),
+  },
+];
 
 
 export function App() {
@@ -21,15 +59,15 @@ export function App() {
       <Sidebar />
 
       <main>
-        <Post 
-          author="Sloan Nascimento"
-          content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo quisquam corrupti temporibus dolore tenetur pariatur. Ut repudiandae voluptate quod quasi ea? Voluptatum, eum nemo natus repellendus sequi pariatur obcaecati tenetur?"
-        />
-
-        <Post 
-          author="Sloan Nascimento"
-          content="Testando 2º POST"
-        />
+        {posts.map(post => {
+          return (
+                  <Post 
+                  author={post.author}
+                  content={post.content}
+                  publishedAt={post.publishedAt}
+                />
+                )
+        })}
       </main>
     </div>
     
