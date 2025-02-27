@@ -4,6 +4,7 @@ import { Avatar } from "./Avatar";
 import { Comment } from "./Comment";
 import styles from "./Post.module.css";
 import { useState } from 'react';
+import { renderIntoDocument } from 'react-dom/test-utils';
 
 /*
 Informações NEC (que serão transformadas em objetos)
@@ -43,6 +44,15 @@ export function Post ({author, publishedAt, content}) {
     function handleNewCommentChange (){
         setNewCommentText(event.target.value);
     }
+
+    function deleteComment(commentToDelete) {
+        //IMUTABILIDADE -> as variáveis não sofrem mutação, nós criamos uma novo valor (um novo espaço na memória)
+        //Filter -> método que percorre todos os comentários e, se retornar TRUE = manter na lista; FALSE = apagar da lista
+        const commentsWithoutDeleteOne = comments.filter(comment => {
+            return comment != commentToDelete;
+        })
+        setComments(commentsWithoutDeleteOne);
+    }
 /* 
 Uma das fomas de manipular datas é com o INTL, mas dá pra usar o "npm i date-fns"
 const publishedAtDateFormatInFull = new Intl.DateTimeFormat 
@@ -71,9 +81,9 @@ const publishedAtDateFormatInFull = new Intl.DateTimeFormat
             <div className={styles.content}>
                 {content.map(line => {
                     if (line.type === 'paragraph'){
-                        return <p>{line.content}</p>
+                        return <p key={line.content} >{line.content}</p>
                     } else if (line.type === 'link'){
-                        return <p><a href='#'>{line.content}</a></p>
+                        return <p key={line.content} ><a href='#'>{line.content}</a></p>
                     }
                 })}
                
@@ -94,7 +104,12 @@ const publishedAtDateFormatInFull = new Intl.DateTimeFormat
 
         <div className={styles.commentList}>
             {comments.map(comment => {
-                return <Comment content={comment}/>
+                return (
+                    <Comment key={comment} 
+                    content={comment} 
+                    onDeleteComment={deleteComment}
+                    />
+                )
             })}
         </div>
         </article>
