@@ -3,6 +3,7 @@ import { ptBR } from 'date-fns/locale/pt-BR';
 import { Avatar } from "./Avatar";
 import { Comment } from "./Comment";
 import styles from "./Post.module.css";
+import { useState } from 'react';
 
 /*
 Informações NEC (que serão transformadas em objetos)
@@ -13,9 +14,19 @@ content: String
 */
 
 export function Post ({author, publishedAt, content}) {
+    //Estudar sobre ESTADO no React
+    const [comments, setComments] = useState([
+        1,
+        2,
+    ])
 
     const publishedAtDateFormatInFull = format(publishedAt, "d 'de' LLLL 'às' HH':'mm'h'", {locale: ptBR})
     const publishedAtDateFormatRelativeNow = formatDistanceToNow(publishedAt, {locale:ptBR, addSuffix: true})
+    function handleCreateNewComment (){
+        event.preventDefault();
+        //Esstudar IMUTABILIDADE no React
+        setComments([... comments, comments.length + 1]);
+    }
 /* 
 Uma das fomas de manipular datas é com o INTL, mas dá pra usar o "npm i date-fns"
 const publishedAtDateFormatInFull = new Intl.DateTimeFormat 
@@ -51,7 +62,7 @@ const publishedAtDateFormatInFull = new Intl.DateTimeFormat
                 })}
                
             </div>
-        <form className={styles.commentForm}>
+        <form onSubmit={handleCreateNewComment} className={styles.commentForm}>
             <strong>Deixe seu feedback</strong>  
             <textarea 
                 placeholder="Deixe um comentário"
@@ -62,9 +73,9 @@ const publishedAtDateFormatInFull = new Intl.DateTimeFormat
         </form>    
 
         <div className={styles.commentList}>
-            <Comment />
-            <Comment />
-            <Comment />
+            {comments.map(comment => {
+                return <Comment />
+            })}
         </div>
         </article>
     )
