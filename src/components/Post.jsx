@@ -42,6 +42,7 @@ export function Post ({author, publishedAt, content}) {
     }
 
     function handleNewCommentChange (){
+        event.target.setCustomValidity("");
         setNewCommentText(event.target.value);
     }
 
@@ -53,6 +54,13 @@ export function Post ({author, publishedAt, content}) {
         })
         setComments(commentsWithoutDeleteOne);
     }
+
+    //Validação de comentário - Passo o texto que desejo que apareça
+    function handleNewCommentInvalid () {
+        event.target.setCustomValidity("Este campo é obrigatório");
+    }
+
+    const isNewCommentEmpty = newCommentText.length === 0;
 /* 
 Uma das fomas de manipular datas é com o INTL, mas dá pra usar o "npm i date-fns"
 const publishedAtDateFormatInFull = new Intl.DateTimeFormat 
@@ -96,9 +104,13 @@ const publishedAtDateFormatInFull = new Intl.DateTimeFormat
                 placeholder="Deixe um comentário"
                 value={newCommentText}
                 onChange={handleNewCommentChange}
+                onInvalid={handleNewCommentInvalid}
+                required
             />  
             <footer>
-                <button type="submit">Publicar</button>
+                <button type="submit" disabled={isNewCommentEmpty} >
+                    Publicar
+                </button>
             </footer>
         </form>    
 

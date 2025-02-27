@@ -103,7 +103,7 @@ do ".comentForm" aplique a seguinte estilização"
     max-height: none;
 }
 
-.commentForm button {
+.commentForm button[type=submit] {
     padding: 1rem 1.5rem;
     margin-top: 1rem;
     border-radius: 8px;
@@ -115,7 +115,13 @@ do ".comentForm" aplique a seguinte estilização"
     transition: background-color 0.1s;
 }
 
-.commentForm button:hover {
+.commentForm button[type=submit]:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+
+}
+/*Só funciona caso o botão não esteja disabilitado */
+.commentForm button[type=submit]:not(:disabled):hover {
     background: var(--green-300);
 }
 
