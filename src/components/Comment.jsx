@@ -13,7 +13,13 @@ export function Comment({content, onDeleteComment}) {
     }
 
     function handleCountLike (){
-        setCountLike (countLike +1);
+       
+        /* Para ATU os likes, posso usar: setCountLike (countLike +1);   ou função*/
+
+        setCountLike((aplaudir) => {
+            return aplaudir + 1
+        });
+
     }
 
     return (
